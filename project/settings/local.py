@@ -101,7 +101,7 @@ class Development(Common):
     #### end templates settings
 
     #### static files settings.
-    STATIC_ROOT = join(os.path.dirname(Common.BASE_DIR), "static")
+    # STATIC_ROOT = join(os.path.dirname(Common.BASE_DIR), "static")
     STATIC_URL = "/static/"
     STATICFILES_DIRS = (join(Common.BASE_DIR, "static"),)
     STATICFILES_FINDERS = (

@@ -7,22 +7,22 @@
 <html lang="en"> <!--<![endif]-->
 <head>
     {% include 'partials/meta.html' %}
-    {% block head %}{% endblock head%}
+    {% block extra-head %}{% endblock extra-head%}
     {% include 'partials/fonts.html' %}
     {% include 'partials/stylesheets.html' %}
-    {% block stylesheets %}{% endblock stylesheets%}
+    {% block extra-styles %}{% endblock extra-styles %}
 </head>
 <body>
-    <header class="header">
+    {% block header %}
         {% include 'partials/header.html' %}
-    </header>
+    {% endblock header%}
     
     {% block body %}{% endblock body %}
 
-    <footer class="footer">
-        {% block extra_footer %} {% endblock extra_footer %}
+    {% block footer-bottom %}
+        {% block extra-footer %} {% endblock extra-footer %}
         {% include 'partials/footer-bottom.html' %}
-    </footer>
+    {% endblock footer-bottom %}
 
     {% include "partials/scripts.html" %}
 
