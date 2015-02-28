@@ -1,2 +1,2 @@
 # python/django dependencies
--r project/settings/requirements/production.txt
+-r project/settings/requirements/local.txt
