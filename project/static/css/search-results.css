@@ -1,0 +1,20 @@
+/*.container .srp_fixed, .container .srp_head {
+width: 100%;
+}*/
+
+.srp_container {
+    font-size: 12px;
+}
+
+.srp_container .row {
+clear: both;
+position: relative;
+/*width: 100%;*/
+background-color: #fff;
+margin-bottom: 2em;
+}
+
+#search-results {
+    font-size: 0.6em;
+    line-height: 1.3em;
+}

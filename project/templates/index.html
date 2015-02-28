@@ -13,21 +13,33 @@
 				<div class="container">
 
 					<header>
-						<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
-						site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
-						<p>Ligula scelerisque justo sem accumsan diam quis<br />
-						vitae natoque dictum sollicitudin elementum.</p>
+						<!-- SearchBox -->
+						<div id="wrap">
+							<form action="" autocomplete="on">
+							<input id="search" name="search" type="text" placeholder="What job you're looking for ?">
+							<input id="search_submit" value="Rechercher" type="submit">
+							</form>
+						</div>
 					</header>
 					
 					<footer>
-						<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+						<!-- <a href="#portfolio" class="button scrolly">Magna Aliquam</a> -->
 					</footer>
 
 				</div>
 			</section>
-			
+
+
+		<!-- Search Results -->
+			<section id="search-results" class="two">
+				<div class="container">
+					{% include 'partials/search-results.html' %}
+				</div>
+			</section>
+		
+
 		<!-- Portfolio -->
-			<section id="portfolio" class="two">
+			<section id="portfolio" class="three">
 				<div class="container">
 			
 					<header>
@@ -88,7 +100,7 @@
 			</section>
 
 		<!-- About Me -->
-			<section id="about" class="three">
+			<section id="about" class="four">
 				<div class="container">
 
 					<header>
@@ -108,7 +120,7 @@
 			</section>
 	
 		<!-- Contact -->
-			<section id="contact" class="four">
+			<section id="contact" class="five">
 				<div class="container">
 
 					<header>
