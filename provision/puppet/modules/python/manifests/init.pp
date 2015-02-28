@@ -23,8 +23,8 @@ class python {
     require => Package[$packages],
   }
 
-  exec { "install-requirements-$virtualenv_name":
+  /*exec { "install-requirements-$virtualenv_name":
     command => "$virtualenv_path/bin/pip install -r $requirements_file",
     require => Exec["create-virtualenv-$virtualenv_name"],
-  }
+  }*/
 }

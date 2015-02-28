@@ -18,11 +18,11 @@ Vagrant.configure("2") do |config|
     if Vagrant.has_plugin?("vagrant-cachier")
         config.cache.scope = :box
     end
-    config.vm.provision :shell, :path => "project/provision/shell/ubuntu.sh"
+    config.vm.provision :shell, :path => "provision/shell/ubuntu.sh"
     config.vm.provision :puppet do |provision|
-        provision.manifests_path ="project/provision/puppet/manifests"
+        provision.manifests_path ="provision/puppet/manifests"
         provision.manifest_file = "site.pp"
-        provision.module_path = "project/provision/puppet/modules"
+        provision.module_path = "provision/puppet/modules"
     end
     config.vm.define "local", primary: true do |local|
       host = RbConfig::CONFIG['host_os']

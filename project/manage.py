@@ -2,9 +2,24 @@
 import os
 import sys
 
+import dotenv
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+dotenv.read_dotenv(os.path.join(BASE_DIR, 'settings/.env'))
+
+
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.local")
+    ENVIRONMENT = os.getenv('ENVIRONMENT')
 
-    from django.core.management import execute_from_command_line
+    if ENVIRONMENT == 'STAGING':
+        settings = 'staging'
+    elif ENVIRONMENT == 'PRODUCTION':
+        settings = 'production'
+    else:
+        settings = 'development'
 
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.local')
+    os.environ.setdefault('DJANGO_CONFIGURATION', settings.title())
+
+    from configurations.management import execute_from_command_line
     execute_from_command_line(sys.argv)

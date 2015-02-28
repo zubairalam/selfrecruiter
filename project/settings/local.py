@@ -1,13 +1,8 @@
 """
-Django settings for {{ project_name }} project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/{{ docs_version }}/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
+Django settings for SelfRecruiter project.
 """
 import os
+from os.path import join
 
 from configurations import Configuration, values
 
@@ -35,7 +30,7 @@ class Common(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-        'django_extensions',
+
     )
 
     MIDDLEWARE_CLASSES = (
@@ -49,15 +44,22 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
 
-    ROOT_URLCONF = '{{ project_name }}.urls'
+    ROOT_URLCONF = 'settings.urls'
 
-    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+    WSGI_APPLICATION = 'settings.wsgi.application'
 
     # Database
     # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue(
-        'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    )
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'db',
+            'USER': 'root',                      # Not used with sqlite3.
+            'PASSWORD': 'xx',                  # Not used with sqlite3.
+            'HOST': '',
+            'PORT': '3306',
+        },
+    }    
 
     # Internationalization
     # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
@@ -84,11 +86,29 @@ class Development(Common):
 
     TEMPLATE_DEBUG = True
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*',]
 
     INSTALLED_APPS = Common.INSTALLED_APPS + (
         'debug_toolbar',
     )
+
+    #### templates settings.
+    TEMPLATE_DIRS = (join(Common.BASE_DIR, "templates"),)
+    TEMPLATE_LOADERS = (
+        "django.template.loaders.filesystem.Loader",  # using django default
+        "django.template.loaders.app_directories.Loader",  # using django default
+    )
+    #### end templates settings
+
+    #### static files settings.
+    STATIC_ROOT = join(os.path.dirname(Common.BASE_DIR), "static")
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = (join(Common.BASE_DIR, "static"),)
+    STATICFILES_FINDERS = (
+        "django.contrib.staticfiles.finders.FileSystemFinder",
+        "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    )
+    #### end static files settings.
 
 
 class Staging(Common):

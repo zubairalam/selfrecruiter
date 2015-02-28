@@ -1,5 +1,5 @@
 
-node "za" {
+node "sr" {
 	$user = "vagrant"
 
 	Exec {
@@ -45,7 +45,7 @@ node "za" {
   # include memcached
   # include postgresql
   include mysql
-  include mongo
+  # include mongo
   include rabbitmq
   include redis
   include python
